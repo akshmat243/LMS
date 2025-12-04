@@ -15,6 +15,8 @@ router.register(r"weekly-tasks", WeeklyStatusTaskViewSet, basename="weekly-tasks
 
 urlpatterns = [
     path('', include(router.urls)),
+    path("api/public/", include("after_logout.urls")),
+
     path("total/", CourseTotalAPIView.as_view(), name="course-total"),
     path("average-score/", CourseAverageScoreAPIView.as_view(), name="course-average-score"),
     path("average-learning-time/", CourseAverageLearningTimeAPIView.as_view(), name="course-average-learning-time"),

@@ -11,7 +11,7 @@ from rest_framework_simplejwt.views import (
 )
 
 # Swagger schema view
-schema_view = get_schema_view(
+schema_view = get_schema_view(  
     openapi.Info(
         title="MyLMS API",
         default_version='v1',
@@ -26,6 +26,10 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/v1/courses/', include('courses.urls')), 
+    
+    # HERE ARE THE PUBLIC APIS 
+    path('api/v1/public/', include('after_logout.urls')),
     path('api/accounts/', include('accounts.urls')), 
     path('api/courses/', include('courses.urls')),
     path('api/achievements/', include('achievements.urls')),

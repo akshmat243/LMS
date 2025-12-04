@@ -4,6 +4,7 @@ from django.utils import timezone
 import uuid
 from django.conf import settings
 
+
 # -------------------------------
 # COURSE MODEL
 # -------------------------------

@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import User, Role, Permission, RolePermission, Profile, UserLog, Post
+from .models import *
+
 
 
 @admin.register(UserLog)
@@ -50,10 +52,12 @@ class PermissionAdmin(admin.ModelAdmin):
     list_display = ("app_label", "model_name", "permission_type", "slug")
     search_fields = ("app_label", "model_name", "permission_type")
 
+
 @admin.register(RolePermission)
 class RolePermissionAdmin(admin.ModelAdmin):
     list_display = ("role", "permission", "slug")
     search_fields = ("role__name", "permission__slug")
+    
 
 @admin.register(Role)
 class RoleAdmin(admin.ModelAdmin):
@@ -64,3 +68,13 @@ class RoleAdmin(admin.ModelAdmin):
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ("user", "full_name", "mobile", "country")
     search_fields = ("user__email", "full_name", "mobile", "country")
+
+
+@admin.register(StudentProfile)
+class StudentProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'country', 'got_job_after_course', 'job_title')
+    list_filter = ('country', 'got_job_after_course')
+    list_editable = ('country', 'got_job_after_course') # List mein hi edit kar lena
+
+
+
